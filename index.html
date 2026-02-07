@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Rose Day Sankshi</title>
+ 
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #ff758c, #ff7eb3);
+    font-family: Arial, sans-serif;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+}
+ 
+.container {
+    margin-top: 100px;
+}
+ 
+h1 {
+    font-size: 42px;
+    animation: glow 2s infinite alternate;
+}
+ 
+.rose {
+    font-size: 110px;
+    animation: float 3s ease-in-out infinite;
+}
+ 
+button {
+    padding: 12px 25px;
+    font-size: 18px;
+    border: none;
+    border-radius: 25px;
+    background-color: white;
+    color: #ff4b5c;
+    cursor: pointer;
+    transition: 0.3s;
+}
+ 
+button:hover {
+    background-color: #ff4b5c;
+    color: white;
+}
+ 
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0); }
+}
+ 
+@keyframes glow {
+    from { text-shadow: 0 0 10px white; }
+    to { text-shadow: 0 0 25px yellow; }
+}
+</style>
+</head>
+ 
+<body>
+ 
+<div class="container">
+    <h1>🌹 Happy Rose Day Sankshi 🌹</h1>
+    <div class="rose">🌹</div>
+    <p id="message">Click below for a special surprise 💌</p>
+    <button onclick="showMessage()">Click Me</button>
+</div>
+ 
+<script>
+function showMessage() {
+    document.getElementById("message").innerHTML =
+        "🌹 Dear Sankshi, this rose is a small symbol of my love and care for you. May your life always bloom with happiness. Happy Rose Day! 💖🌹";
+}
+</script>
+ 
+</body>
+</html>
