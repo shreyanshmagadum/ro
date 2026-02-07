@@ -19,46 +19,49 @@ body{
     display:flex;
     justify-content:center;
     align-items:center;
-    background:linear-gradient(135deg,#1e1e2f,#3a0d2b,#ff4b6e);
+    background:linear-gradient(135deg,#1b0b1f,#3a0d2b,#ff4b6e);
     color:white;
     text-align:center;
 }
 
-/* Card */
+/* Center card */
 .card{
     z-index:2;
+    padding:20px;
 }
 
-/* Typing name */
+/* ✨ Typing title (NO CUT ISSUE) */
 .name{
     font-size:40px;
-    border-right:3px solid white;
-    width:0;
     white-space:nowrap;
     overflow:hidden;
-    animation:typing 3s steps(20) forwards, blink .6s infinite;
+    border-right:3px solid white;
+    width:0;
+    margin:auto;
+    animation:typing 3s steps(30,end) forwards, blink .7s infinite;
 }
 
 @keyframes typing{
-    to{ width:260px; }
+    from{width:0}
+    to{width:100%}
 }
 
 @keyframes blink{
-    50%{border-color:transparent;}
+    50%{border-color:transparent}
 }
 
-/* Rose bloom animation */
+/* 🌹 Rose bloom animation */
 .rose{
     font-size:120px;
     margin:25px 0;
     transform:scale(0);
-    animation:bloom 2s ease forwards 2.5s;
+    animation:bloom 2s ease forwards 3s;
 }
 
 @keyframes bloom{
-    0%{transform:scale(0) rotate(-180deg);}
-    60%{transform:scale(1.3);}
-    100%{transform:scale(1);}
+    0%{transform:scale(0) rotate(-180deg)}
+    60%{transform:scale(1.3)}
+    100%{transform:scale(1)}
 }
 
 /* Button */
@@ -75,18 +78,19 @@ button{
 
 button:hover{
     background:#ff2d55;
-    color:#fff;
+    color:white;
 }
 
-/* Message */
+/* Love message */
 .message{
     opacity:0;
-    margin-top:20px;
+    margin-top:25px;
     font-size:20px;
+    line-height:1.6;
     transition:1.5s;
 }
 
-/* Floating petals */
+/* Falling petals */
 .petal{
     position:absolute;
     font-size:18px;
@@ -94,20 +98,30 @@ button:hover{
 }
 
 @keyframes fall{
-    from{transform:translateY(-10vh) rotate(0deg);}
-    to{transform:translateY(110vh) rotate(360deg);opacity:0;}
+    from{transform:translateY(-10vh) rotate(0deg)}
+    to{transform:translateY(110vh) rotate(360deg);opacity:0}
 }
 
-/* Hearts */
+/* Floating hearts */
 .heart{
     position:absolute;
-    color:#ff9ecb;
-    animation:floatUp 6s linear infinite;
+    font-size:18px;
+    animation:floatUp linear infinite;
 }
 
 @keyframes floatUp{
-    from{transform:translateY(100vh);}
-    to{transform:translateY(-10vh);opacity:0;}
+    from{transform:translateY(100vh)}
+    to{transform:translateY(-10vh);opacity:0}
+}
+
+/* Soft glow effect */
+.card{
+    animation:fadeIn 2s ease;
+}
+
+@keyframes fadeIn{
+    from{opacity:0}
+    to{opacity:1}
 }
 </style>
 </head>
@@ -124,21 +138,20 @@ button:hover{
 
     <div id="msg" class="message">
         Dear Sakshi,<br><br>
-        Every petal carries my feelings for you.<br>
-        You make my world brighter and my heart calmer.<br><br>
-        I’m lucky to have you ❤️<br><br>
-        Forever yours 🌸
+        Like this rose, my love keeps blooming every day.<br>
+        You make my world brighter and my heart peaceful.<br><br>
+        I’m lucky to have you in my life ❤️<br><br>
+        Forever Yours 🌸
     </div>
 
 </div>
 
 <script>
-
-/* Show message */
 function showLove(){
-    document.getElementById("msg").style.opacity=1;
 
-    // petals rain
+    document.getElementById("msg").style.opacity = 1;
+
+    // 🌹 petals rain
     for(let i=0;i<40;i++){
         let p=document.createElement("div");
         p.innerHTML="🌹";
@@ -148,17 +161,16 @@ function showLove(){
         document.body.appendChild(p);
     }
 
-    // floating hearts
-    for(let i=0;i<25;i++){
+    // ❤️ floating hearts
+    for(let i=0;i<30;i++){
         let h=document.createElement("div");
         h.innerHTML="❤️";
         h.className="heart";
         h.style.left=Math.random()*100+"vw";
-        h.style.animationDuration=(4+Math.random()*4)+"s";
+        h.style.animationDuration=(4+Math.random()*5)+"s";
         document.body.appendChild(h);
     }
 }
-
 </script>
 
 </body>
