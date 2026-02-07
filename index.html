@@ -1,80 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Rose Day Sakshi</title>
- 
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Happy Rose Day Sakshi ❤️</title>
+
 <style>
-body {
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(to right, #ff758c, #ff7eb3);
-    font-family: Arial, sans-serif;
-    text-align: center;
-    color: white;
-    overflow: hidden;
+body{
+    margin:0;
+    height:100vh;
+    background:linear-gradient(135deg,#ff9a9e,#fad0c4,#fad0c4);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:'Segoe UI',sans-serif;
+    overflow:hidden;
+    color:white;
+    text-align:center;
 }
- 
-.container {
-    margin-top: 100px;
+
+/* Card */
+.container{
+    z-index:2;
 }
- 
-h1 {
-    font-size: 42px;
-    animation: glow 2s infinite alternate;
+
+/* Name glow */
+h1{
+    font-size:40px;
+    animation:glow 2s infinite alternate;
 }
- 
-.rose {
-    font-size: 110px;
-    animation: float 3s ease-in-out infinite;
+
+@keyframes glow{
+    from{ text-shadow:0 0 10px white; }
+    to{ text-shadow:0 0 25px #ff003c; }
 }
- 
-button {
-    padding: 12px 25px;
-    font-size: 18px;
-    border: none;
-    border-radius: 25px;
-    background-color: white;
-    color: #ff4b5c;
-    cursor: pointer;
-    transition: 0.3s;
+
+/* 🌹 Real CSS Rose */
+.rose{
+    position:relative;
+    width:120px;
+    height:120px;
+    margin:30px auto;
 }
- 
-button:hover {
-    background-color: #ff4b5c;
-    color: white;
+
+.petal{
+    position:absolute;
+    width:70px;
+    height:70px;
+    background:#ff1744;
+    border-radius:50% 50% 50% 0;
+    transform-origin:bottom right;
 }
- 
-@keyframes float {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
-    100% { transform: translateY(0); }
+
+.petal:nth-child(1){ transform:rotate(0deg); }
+.petal:nth-child(2){ transform:rotate(60deg); }
+.petal:nth-child(3){ transform:rotate(120deg); }
+.petal:nth-child(4){ transform:rotate(180deg); }
+.petal:nth-child(5){ transform:rotate(240deg); }
+.petal:nth-child(6){ transform:rotate(300deg); }
+
+.center{
+    position:absolute;
+    width:40px;
+    height:40px;
+    background:#b00020;
+    border-radius:50%;
+    top:40px;
+    left:40px;
 }
- 
-@keyframes glow {
-    from { text-shadow: 0 0 10px white; }
-    to { text-shadow: 0 0 25px yellow; }
+
+/* Button */
+button{
+    padding:12px 28px;
+    border:none;
+    border-radius:30px;
+    font-size:18px;
+    cursor:pointer;
+    background:white;
+    color:#ff1744;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#ff1744;
+    color:white;
+}
+
+/* Message */
+#message{
+    margin-top:20px;
+    opacity:0;
+    font-size:20px;
+    transition:1.5s;
+}
+
+/* Falling petals */
+.fall{
+    position:absolute;
+    font-size:20px;
+    animation:fall 5s linear infinite;
+}
+
+@keyframes fall{
+    0%{transform:translateY(-10vh);}
+    100%{transform:translateY(110vh);opacity:0;}
 }
 </style>
 </head>
- 
+
 <body>
- 
+
 <div class="container">
-    <h1>🌹 Happy Rose Day Sankshi 🌹</h1>
-    <div class="rose">🌹</div>
-    <p id="message">Click below for a special surprise 💌</p>
-    <button onclick="showMessage()">Click Me</button>
+    <h1>Happy Rose Day Sakshi 🌹</h1>
+
+    <div class="rose">
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="center"></div>
+    </div>
+
+    <button onclick="showLove()">Open My Heart 💌</button>
+
+    <div id="message">
+        Dear Sakshi ❤️<br><br>
+        Like this rose, my love keeps blooming every day.<br>
+        Thank you for being the most beautiful part of my life.<br><br>
+        Forever yours 🌸
+    </div>
 </div>
- 
+
 <script>
-function showMessage() {
-    document.getElementById("message").innerHTML =
-        "🌹 Dear Sankshi, this rose is a small symbol of my love and care for you. May your life always bloom with happiness. Happy Rose Day! 💖🌹";
+function showLove(){
+
+    document.getElementById("message").style.opacity = 1;
+
+    for(let i=0;i<30;i++){
+        let petal=document.createElement("div");
+        petal.className="fall";
+        petal.innerHTML="🌹";
+        petal.style.left=Math.random()*100+"vw";
+        petal.style.animationDuration=(3+Math.random()*3)+"s";
+        document.body.appendChild(petal);
+    }
 }
 </script>
- 
-</body>
 
+</body>
 </html>
