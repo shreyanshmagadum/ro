@@ -3,150 +3,162 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Happy Rose Day Sakshi ❤️</title>
+<title>For Sakshi ❤️</title>
 
 <style>
-body{
+*{
     margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
     height:100vh;
-    background:linear-gradient(135deg,#ff9a9e,#fad0c4,#fad0c4);
+    overflow:hidden;
     display:flex;
     justify-content:center;
     align-items:center;
-    font-family:'Segoe UI',sans-serif;
-    overflow:hidden;
+    background:linear-gradient(135deg,#1e1e2f,#3a0d2b,#ff4b6e);
     color:white;
     text-align:center;
 }
 
 /* Card */
-.container{
+.card{
     z-index:2;
 }
 
-/* Name glow */
-h1{
+/* Typing name */
+.name{
     font-size:40px;
-    animation:glow 2s infinite alternate;
+    border-right:3px solid white;
+    width:0;
+    white-space:nowrap;
+    overflow:hidden;
+    animation:typing 3s steps(20) forwards, blink .6s infinite;
 }
 
-@keyframes glow{
-    from{ text-shadow:0 0 10px white; }
-    to{ text-shadow:0 0 25px #ff003c; }
+@keyframes typing{
+    to{ width:260px; }
 }
 
-/* 🌹 Real CSS Rose */
+@keyframes blink{
+    50%{border-color:transparent;}
+}
+
+/* Rose bloom animation */
 .rose{
-    position:relative;
-    width:120px;
-    height:120px;
-    margin:30px auto;
+    font-size:120px;
+    margin:25px 0;
+    transform:scale(0);
+    animation:bloom 2s ease forwards 2.5s;
 }
 
-.petal{
-    position:absolute;
-    width:70px;
-    height:70px;
-    background:#ff1744;
-    border-radius:50% 50% 50% 0;
-    transform-origin:bottom right;
-}
-
-.petal:nth-child(1){ transform:rotate(0deg); }
-.petal:nth-child(2){ transform:rotate(60deg); }
-.petal:nth-child(3){ transform:rotate(120deg); }
-.petal:nth-child(4){ transform:rotate(180deg); }
-.petal:nth-child(5){ transform:rotate(240deg); }
-.petal:nth-child(6){ transform:rotate(300deg); }
-
-.center{
-    position:absolute;
-    width:40px;
-    height:40px;
-    background:#b00020;
-    border-radius:50%;
-    top:40px;
-    left:40px;
+@keyframes bloom{
+    0%{transform:scale(0) rotate(-180deg);}
+    60%{transform:scale(1.3);}
+    100%{transform:scale(1);}
 }
 
 /* Button */
 button{
-    padding:12px 28px;
+    padding:12px 30px;
+    font-size:18px;
     border:none;
     border-radius:30px;
-    font-size:18px;
     cursor:pointer;
-    background:white;
-    color:#ff1744;
-    transition:0.3s;
+    background:#fff;
+    color:#ff2d55;
+    transition:.3s;
 }
 
 button:hover{
-    background:#ff1744;
-    color:white;
+    background:#ff2d55;
+    color:#fff;
 }
 
 /* Message */
-#message{
-    margin-top:20px;
+.message{
     opacity:0;
+    margin-top:20px;
     font-size:20px;
     transition:1.5s;
 }
 
-/* Falling petals */
-.fall{
+/* Floating petals */
+.petal{
     position:absolute;
-    font-size:20px;
-    animation:fall 5s linear infinite;
+    font-size:18px;
+    animation:fall linear infinite;
 }
 
 @keyframes fall{
-    0%{transform:translateY(-10vh);}
-    100%{transform:translateY(110vh);opacity:0;}
+    from{transform:translateY(-10vh) rotate(0deg);}
+    to{transform:translateY(110vh) rotate(360deg);opacity:0;}
+}
+
+/* Hearts */
+.heart{
+    position:absolute;
+    color:#ff9ecb;
+    animation:floatUp 6s linear infinite;
+}
+
+@keyframes floatUp{
+    from{transform:translateY(100vh);}
+    to{transform:translateY(-10vh);opacity:0;}
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
-    <h1>Happy Rose Day Sakshi 🌹</h1>
+<div class="card">
 
-    <div class="rose">
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="center"></div>
-    </div>
+    <div class="name">Happy Rose Day Sakshi ❤️</div>
+
+    <div class="rose">🌹</div>
 
     <button onclick="showLove()">Open My Heart 💌</button>
 
-    <div id="message">
-        Dear Sakshi ❤️<br><br>
-        Like this rose, my love keeps blooming every day.<br>
-        Thank you for being the most beautiful part of my life.<br><br>
+    <div id="msg" class="message">
+        Dear Sakshi,<br><br>
+        Every petal carries my feelings for you.<br>
+        You make my world brighter and my heart calmer.<br><br>
+        I’m lucky to have you ❤️<br><br>
         Forever yours 🌸
     </div>
+
 </div>
 
 <script>
+
+/* Show message */
 function showLove(){
+    document.getElementById("msg").style.opacity=1;
 
-    document.getElementById("message").style.opacity = 1;
+    // petals rain
+    for(let i=0;i<40;i++){
+        let p=document.createElement("div");
+        p.innerHTML="🌹";
+        p.className="petal";
+        p.style.left=Math.random()*100+"vw";
+        p.style.animationDuration=(3+Math.random()*4)+"s";
+        document.body.appendChild(p);
+    }
 
-    for(let i=0;i<30;i++){
-        let petal=document.createElement("div");
-        petal.className="fall";
-        petal.innerHTML="🌹";
-        petal.style.left=Math.random()*100+"vw";
-        petal.style.animationDuration=(3+Math.random()*3)+"s";
-        document.body.appendChild(petal);
+    // floating hearts
+    for(let i=0;i<25;i++){
+        let h=document.createElement("div");
+        h.innerHTML="❤️";
+        h.className="heart";
+        h.style.left=Math.random()*100+"vw";
+        h.style.animationDuration=(4+Math.random()*4)+"s";
+        document.body.appendChild(h);
     }
 }
+
 </script>
 
 </body>
